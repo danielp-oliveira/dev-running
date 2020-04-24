@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ActionCreators from '../../redux/actionCreators'
 
@@ -10,14 +11,12 @@ const Header = () => (
     <p>
       Edit <code>src/App.js</code> and save to reload.
     </p>
-    <a
-      className='App-link'
-      href='https://reactjs.org'
-      target='_blank'
-      rel='noopener noreferrer'
-    >
-      Learn React
-    </a>
+    <p>
+      <Link to='/'>Home</Link>
+      <Link to='/admin'>Admin</Link>
+      <Link to='/restrito'>Restrito</Link>
+      <Link to='/login'>Login</Link>
+    </p>
   </header>
 )
 

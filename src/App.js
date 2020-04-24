@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
@@ -8,6 +9,11 @@ import './App.css'
 
 import store from './redux'
 import { Provider } from 'react-redux'
+
+import HomeScreen from './screens/Home'
+import LoginScreen from './screens/Login'
+import AdminScreen from './screens/Admin'
+import RestritoScreen from './screens/Restrito'
 
 function App() {
   // useEffect(() => {
@@ -42,9 +48,14 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className='App'>
+      <Router>
+        <Route path='/' exact component={HomeScreen} />
+        <Route path='/admin' component={AdminScreen} />
+        <Route path='/restrito' component={RestritoScreen} />
+        <Route path='/login' component={LoginScreen} />
         <Header />
-      </div>
+        <div className='App'></div>
+      </Router>
     </Provider>
   )
 }
