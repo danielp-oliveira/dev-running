@@ -7,7 +7,7 @@ import './App.css'
 
 function App() {
   useEffect(() => {
-    const signIn = async () => {
+    const login = async () => {
       let token = localStorage.getItem('token')
       if (!token) {
         const login = await axios.post('http://localhost:3001/users/login', {
@@ -20,7 +20,20 @@ function App() {
       const decoded = jwtDecode(token)
       console.log(decoded)
     }
-    signIn()
+
+    const me = async () => {
+      const token = localStorage.getItem('token')
+      console.log(token)
+      const { data } = await axios.get('http://localhost:3001/users/me', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      console.log(data)
+    }
+
+    login()
+    me()
   }, [])
 
   return (
